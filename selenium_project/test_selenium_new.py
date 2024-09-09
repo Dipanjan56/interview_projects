@@ -29,7 +29,7 @@ def wait_for_element_to_be_visible(driver, element, timeout: int):
     except NoSuchElementException as e:
         print(f'element not found, Exception Type: {type(e).__name__}')
 
-def advanced_wait_for_element_for_enabled(driver, element, timeout: int, poll_frequency: float, errors: list[Any]):
+def advanced_wait_for_element_to_be_enabled(driver, element, timeout: int, poll_frequency: float, errors: list[Any]):
     try:
         wait = WebDriverWait(driver, timeout, poll_frequency=poll_frequency, ignored_exceptions=errors)
         wait.until(lambda d: element.is_enabled() or True)
@@ -65,7 +65,7 @@ def e2e_test():
     wait_for_element_to_be_visible(driver, password, 2)
     password.send_keys(cred_list[1])
     errors = [NoSuchElementException, ElementNotInteractableException]
-    advanced_wait_for_element_for_enabled(driver, login_button, 3, 0.2, errors)
+    advanced_wait_for_element_to_be_enabled(driver, login_button, 3, 0.2, errors)
     login_button.click()
 
     print(f'user: {cred_list[0]} has been logged in successfully')
