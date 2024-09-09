@@ -6,7 +6,7 @@ def get(self, endpoint, headers, name=None):
         return check_response_code('GET', endpoint, response)
 
 def post(self, endpoint, headers, request_body, name=None):
-    with self.client.get(endpoint, headers=headers, json=request_body, name=name, catch_response=True) as response:
+    with self.client.post(endpoint, headers=headers, json=request_body, name=name, catch_response=True) as response:
         return check_response_code('POST', endpoint, response)
 
 
